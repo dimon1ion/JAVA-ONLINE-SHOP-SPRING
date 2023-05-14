@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/styles/mycss.css}"/>
+    <meta charset="UTF-8">
+    <title>Add</title>
+</head>
+<body>
+<h1>Edit person</h1>
+<form th:action="@{/person/edit}" th:method="put" th:object="${person}">
+    <div class="model-body">
+        <input type="number" id="id" th:field="*{id}" hidden>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" class="form-control" id="first-name" th:field="*{firstname}"/>
+            <div class="error" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">First Name Error</div>
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" class="form-control" id="last-name" th:field="*{lastname}"/>
+            <div class="error" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Last Name Error</div>
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" class="form-control" id="age" th:field="*{age}"/>
+            <div class="error" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Edit">
+        </div>
+    </div>
+</form>
+</body>
+</html>
